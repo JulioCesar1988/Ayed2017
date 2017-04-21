@@ -1,7 +1,6 @@
 package test;
 
 import ejercicio1.ArbolBinario;
-import src.tp03.ejercicio6.NodoBinario;
 import tp02.ejercicio1.ListaDeEnterosEnlazada;
 
 public class RedBinarioLlena {
