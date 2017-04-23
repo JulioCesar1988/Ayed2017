@@ -1,10 +1,20 @@
-package test;
+package ejerciciosArboles;
 
+/****************** * 
+ * Ejercicio 3
+Defina una clase Java denominada ContadorArbol cuya función principal es proveer métodos de
+validación sobre árboles binarios de enteros. Para ello la clase tiene como variable de instancia un
+ArbolBinario<Integer>. Implemente en dicha clase un método denominado numerosPares() que
+devuelve en una estructura adecuada (sin ningún criterio de orden) todos los elementos pares del
+árbol (divisibles por 2). Defina la clase dentro del paquete tp03.ejercicio3
+a) Implemente el método realizando un recorrido InOrden.
+b) Implemente el método realizando un recorrido PostOrden. 
+
+*/
 import ejercicio1.ArbolBinario;
 import src.tp03.ejercicio6.ArbolBinarioDeBusqueda;
 
-public class Test {
-
+public class CantidadPares {
 	public static int cantidadPar(ArbolBinarioDeBusqueda<Integer> a) {
 		int cant = 0;
 		if (!a.esVacio()) {
@@ -26,11 +36,9 @@ public class Test {
 	public static int contarHojas(ArbolBinarioDeBusqueda<Integer> a) {
 		int cant = 0;
 		if (a != null) {
-
 			if (!a.esVacio()) {
 				if (a.esHoja()) {
 					cant++;
-
 				} else {
 					if (!a.getHijoDerecho().esVacio()) {
 						cant = cant + contarHojas(a.getHijoDerecho());
@@ -38,40 +46,28 @@ public class Test {
 					if (!a.getHijoIzquierdo().esVacio()) {
 						cant = cant + contarHojas(a.getHijoIzquierdo());
 					}
-
 				}
 
 				return cant;
 			}
-
 		}
-
 		return cant;
 	}
 
 	public static ArbolBinario<Integer> espejo(ArbolBinario<Integer> a) {
-
 		if (a != null) {
-
 			if (!a.esVacio()) {
-
 				if (!a.getHijoIzquierdo().esVacio()) {
-
 					a.agregarHijoIzquierdo(a.getHijoDerecho());
 					espejo(a.getHijoIzquierdo());
-
 				}
 				if (!a.getHijoDerecho().esVacio()) {
 					// a.eliminarHijoDerecho();
 					a.agregarHijoDerecho(a.getHijoIzquierdo());
-
 					espejo(a.getHijoDerecho());
 				}
-
 			}
-
 		}
-
 		return a;
 	}
 
@@ -85,7 +81,6 @@ public class Test {
 				}
 				if (!a.getHijoDerecho().esVacio()) {
 					System.out.println("soy hijo derecho : " + a.getHijoDerecho().getDatoRaiz());
-
 					recorrido(a.getHijoDerecho());
 				}
 
@@ -95,10 +90,8 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-
 		// CREARO EL ARBOL
 		ArbolBinarioDeBusqueda<Integer> b = new ArbolBinarioDeBusqueda<Integer>(20);
-
 		// LE MANDO
 		b.agregar(6);
 		b.agregar(5);
@@ -108,9 +101,7 @@ public class Test {
 
 		// b.imprimirInOrden();
 		// System.out.println("cantidad de pares : " + cantidadPar(b));
-
 		// System.out.println("cantidad de hojas : " + contarHojas(b));
-
 		// Sub Arboles con hijos
 		ArbolBinario<Integer> arbolbinario1 = new ArbolBinario<Integer>(2);
 		arbolbinario1.agregarHijoDerecho(new ArbolBinario<Integer>(5));

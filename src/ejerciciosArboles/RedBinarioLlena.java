@@ -1,4 +1,4 @@
-package test;/*******************
+package ejerciciosArboles;/*******************
 				
 				*
 				*Una red binaria es una red que posee una topología de árbol binario lleno. Por ejemplo:
@@ -19,7 +19,6 @@ import ejercicio1.ArbolBinario;
 import tp02.ejercicio1.ListaDeEnterosEnlazada;
 
 public class RedBinarioLlena {
-
 	public static int retardoReenvio(ArbolBinario<Integer> a) {
 		int retardo = 0;
 		ListaDeEnterosEnlazada lista = new ListaDeEnterosEnlazada();
@@ -28,47 +27,33 @@ public class RedBinarioLlena {
 		int MaxRetardo = -1;
 		lista.comenzar();
 		while (!(lista.fin())) {
-
 			Integer n = lista.proximo();
 			if (n > MaxRetardo) {
 				MaxRetardo = n;
 			}
-
 		}
-
 		return MaxRetardo;
 	}
 
 	public static void procesar(ArbolBinario<Integer> a, ListaDeEnterosEnlazada l, int retardo) {
-
 		if (a.getDatoRaiz() != null) {
-
 			retardo = retardo + a.getDatoRaiz();
-
 			if (!a.getHijoDerecho().esVacio()) {
-
 				procesar(a.getHijoDerecho(), l, retardo);
 			}
-
 			if (!a.getHijoIzquierdo().esVacio()) {
-
 				procesar(a.getHijoIzquierdo(), l, retardo);
 			}
-
 			if (a.esHoja()) {
 				l.agregarInicio(retardo);
 			}
-
 		}
-
 	}
 
 	public static void main(String[] args) {
-
 		ArbolBinario<Integer> b1 = new ArbolBinario<Integer>(10);
 		b1.agregarHijoDerecho(new ArbolBinario<Integer>(10));
 		b1.agregarHijoIzquierdo(new ArbolBinario<Integer>(80));
-
 		ArbolBinario<Integer> b2 = new ArbolBinario<Integer>(3);
 		b2.agregarHijoDerecho(new ArbolBinario<Integer>(2));
 		b2.agregarHijoIzquierdo(new ArbolBinario<Integer>(7));
