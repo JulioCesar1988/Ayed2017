@@ -1,19 +1,19 @@
 package test;/*******************
-
-*
-*Una red binaria es una red que posee una topología de árbol binario lleno. Por ejemplo:
-Los nodos que conforman una red binaria llena tiene la particularidad de que todos ellos conocen
-cuál es su retardo de reenvío. El retardo de reenvío se define como el período comprendido entre
-que un nodo recibe un mensaje y lo reenvía a sus dos hijos.
-Su tarea es calcular el mayor retardo posible, en el camino que realiza un mensaje desde la raíz
-hasta llegar a las hojas en una red binaria llena.
-c) Indique qué estrategia (recorrido en profundidad o por niveles) utilizará para resolver el
-problema.
-d) Cree una clase Java llamada RedBinariaLlena donde implementará lo solicitado en el método
-retardoReenvio():int
-Defina la clase dentro del paquete tp03.ejercicio4 
-
-*/
+				
+				*
+				*Una red binaria es una red que posee una topología de árbol binario lleno. Por ejemplo:
+				Los nodos que conforman una red binaria llena tiene la particularidad de que todos ellos conocen
+				cuál es su retardo de reenvío. El retardo de reenvío se define como el período comprendido entre
+				que un nodo recibe un mensaje y lo reenvía a sus dos hijos.
+				Su tarea es calcular el mayor retardo posible, en el camino que realiza un mensaje desde la raíz
+				hasta llegar a las hojas en una red binaria llena.
+				c) Indique qué estrategia (recorrido en profundidad o por niveles) utilizará para resolver el
+				problema.
+				d) Cree una clase Java llamada RedBinariaLlena donde implementará lo solicitado en el método
+				retardoReenvio():int
+				Defina la clase dentro del paquete tp03.ejercicio4 
+				
+				*/
 
 import ejercicio1.ArbolBinario;
 import tp02.ejercicio1.ListaDeEnterosEnlazada;
@@ -39,24 +39,24 @@ public class RedBinarioLlena {
 		return MaxRetardo;
 	}
 
-	public static void procesar(ArbolBinario<Integer> a, ListaDeEnterosEnlazada l, int sumar) {
+	public static void procesar(ArbolBinario<Integer> a, ListaDeEnterosEnlazada l, int retardo) {
 
 		if (a.getDatoRaiz() != null) {
 
-			sumar = sumar + a.getDatoRaiz();
+			retardo = retardo + a.getDatoRaiz();
 
 			if (!a.getHijoDerecho().esVacio()) {
 
-				procesar(a.getHijoDerecho(), l, sumar);
+				procesar(a.getHijoDerecho(), l, retardo);
 			}
 
 			if (!a.getHijoIzquierdo().esVacio()) {
 
-				procesar(a.getHijoIzquierdo(), l, sumar);
+				procesar(a.getHijoIzquierdo(), l, retardo);
 			}
 
 			if (a.esHoja()) {
-				l.agregarInicio(sumar);
+				l.agregarInicio(retardo);
 			}
 
 		}
