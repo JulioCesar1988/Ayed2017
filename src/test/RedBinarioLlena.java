@@ -1,4 +1,19 @@
-package test;
+package test;/*******************
+
+*
+*Una red binaria es una red que posee una topología de árbol binario lleno. Por ejemplo:
+Los nodos que conforman una red binaria llena tiene la particularidad de que todos ellos conocen
+cuál es su retardo de reenvío. El retardo de reenvío se define como el período comprendido entre
+que un nodo recibe un mensaje y lo reenvía a sus dos hijos.
+Su tarea es calcular el mayor retardo posible, en el camino que realiza un mensaje desde la raíz
+hasta llegar a las hojas en una red binaria llena.
+c) Indique qué estrategia (recorrido en profundidad o por niveles) utilizará para resolver el
+problema.
+d) Cree una clase Java llamada RedBinariaLlena donde implementará lo solicitado en el método
+retardoReenvio():int
+Defina la clase dentro del paquete tp03.ejercicio4 
+
+*/
 
 import ejercicio1.ArbolBinario;
 import tp02.ejercicio1.ListaDeEnterosEnlazada;
@@ -6,25 +21,22 @@ import tp02.ejercicio1.ListaDeEnterosEnlazada;
 public class RedBinarioLlena {
 
 	public static int retardoReenvio(ArbolBinario<Integer> a) {
-		int sumar = 0;
-		ListaDeEnterosEnlazada l = new ListaDeEnterosEnlazada();
-		l.comenzar();
-		procesar(a, l, sumar);
+		int retardo = 0;
+		ListaDeEnterosEnlazada lista = new ListaDeEnterosEnlazada();
+		lista.comenzar();
+		procesar(a, lista, retardo);
+		int MaxRetardo = -1;
+		lista.comenzar();
+		while (!(lista.fin())) {
 
-		System.out.println("tamaño de lista : " + l.tamanio());
-		int max = -1;
-		l.comenzar();
-		while (!(l.fin())) {
-
-			Integer n = l.proximo();
-			if (n > max) {
-				max = n;
+			Integer n = lista.proximo();
+			if (n > MaxRetardo) {
+				MaxRetardo = n;
 			}
-			System.out.println(n);
 
 		}
 
-		return max;
+		return MaxRetardo;
 	}
 
 	public static void procesar(ArbolBinario<Integer> a, ListaDeEnterosEnlazada l, int sumar) {
@@ -44,10 +56,7 @@ public class RedBinarioLlena {
 			}
 
 			if (a.esHoja()) {
-
-				System.out.println("suma vale : " + sumar);
 				l.agregarInicio(sumar);
-				System.out.println("soy hoja" + a.getDatoRaiz());
 			}
 
 		}
