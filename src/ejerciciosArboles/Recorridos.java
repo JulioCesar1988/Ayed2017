@@ -24,7 +24,6 @@ public class Recorridos {
 
 	}
 
-	
 	/***
 	 * Inorden Se procesa el hijo izquierdo, luego la raíz y último el hijo
 	 * derecho
@@ -60,12 +59,11 @@ public class Recorridos {
 		}
 
 	}
-	 
-	
-	/***Por niveles
-Se procesan los nodos teniendo en cuenta sus niveles,
-primero la raíz, luego los hijos, los hijos de éstos, etc.
-***/	
+
+	/***
+	 * Por niveles Se procesan los nodos teniendo en cuenta sus niveles, primero
+	 * la raíz, luego los hijos, los hijos de éstos, etc.
+	 ***/
 	public static void porNiveles(ArbolBinario<Integer> arbol) {
 		ColaGenerica<ArbolBinario<Integer>> q = new ColaGenerica<ArbolBinario<Integer>>();
 		q.encolar(arbol);
@@ -81,19 +79,16 @@ primero la raíz, luego los hijos, los hijos de éstos, etc.
 					q.encolar(elemento.getHijoDerecho());
 				}
 			} else {
-				if (elemento == null && !q.esVacia() ) {
+				if (elemento == null && !q.esVacia()) {
 					System.out.println("######");
-					q.encolar(null);	
+					q.encolar(null);
 				}
-				
+
 			}
-			
+
 		}
 		System.out.println("fin del recorrido.");
 	}
-	
-	
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -105,14 +100,13 @@ primero la raíz, luego los hijos, los hijos de éstos, etc.
 		ArbolBinario<Integer> arbolBinario2 = new ArbolBinario<Integer>(60);
 		arbolBinario2.agregarHijoDerecho(new ArbolBinario<Integer>(90));
 		arbolBinario2.agregarHijoIzquierdo(new ArbolBinario<Integer>(10));
-		
+
 		ArbolBinario<Integer> arbolBinario0 = new ArbolBinario<Integer>(100);
 		arbolBinario0.agregarHijoDerecho(arbolBinario1);
 		arbolBinario0.agregarHijoIzquierdo(arbolBinario2);
-		//preOrden(arbolBinario);
-		//InOrden(arbolBinario);
+		// preOrden(arbolBinario);
+		// InOrden(arbolBinario);
 		porNiveles(arbolBinario0);
-		
 
 	}
 
