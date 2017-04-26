@@ -41,18 +41,14 @@ public class ArbolCreciente {
 					}
 					cantidadNodo = 0;
 				}
-                // Evaluando el ultimo nivel .
+				// Evaluando el ultimo nivel .
 				int aux = nivel + 1;
 				if (q.esVacia() && e == null) {
-					cumple = cantidadNodo == aux;
+					cumple = (cantidadNodo == aux);
 				}
-
 			}
-
 		}
-
 		return cumple;
-
 	}
 
 	public static void main(String[] args) {

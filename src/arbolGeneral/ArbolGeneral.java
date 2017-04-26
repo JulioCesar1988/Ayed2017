@@ -1,5 +1,6 @@
 package arbolGeneral;
 
+import ColaGenerica.ColaGenerica;
 import listasGenericas.ListaEnlazadaGenerica;
 import listasGenericas.ListaGenerica;
 
@@ -99,6 +100,9 @@ public class ArbolGeneral<T> {
     
 	public Integer altura() {	 
 		//Falta implementar..
+		
+		
+		
 	   return 0;
 	}
 
@@ -123,4 +127,27 @@ public class ArbolGeneral<T> {
 		//Falta implementar..
 		return false;
 	}
+
+	public ListaEnlazadaGenerica<T> preOrden() {
+		// Método que retorna una lista con los elementos del Árbol receptor, en
+		// orden de recorrido por
+		// niveles de arriba hacia abajo y de izquierda a derecha, incluyendo
+		// algún elemento que indique el
+		// fin de cada nivel
+		// código
+		ListaEnlazadaGenerica<T> lis = new ListaEnlazadaGenerica<T>();
+		preOrden(lis);
+		return lis;
+
+	}
+
+	private void preOrden(ListaGenerica<T> l) {
+		l.agregarFinal(this.getDatoRaiz());
+		ListaGenerica<ArbolGeneral<T>> lHijos = this.getHijos();
+		lHijos.comenzar();
+		while (!lHijos.fin()) {
+			lHijos.proximo().preOrden(l);
+		}
+	}
+
 }
